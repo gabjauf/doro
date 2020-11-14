@@ -1,0 +1,5 @@
+.menuItem > .far,
+.menuItem > .fas,
+.menuItem > .fab {
+  margin-right: 5px;
+}
