@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { partition } from 'lodash';
 import styles from './TaskKanbanView.component.css';
@@ -7,9 +7,14 @@ import TaskComponent from './Task.component';
 
 export default function TaskKanbanViewComponent(props: any): JSX.Element {
   const { tasks } = props;
-  const partitionnedTasks = partition(tasks, 'status');
   const columnNames = ['todo', 'in_progress', 'done'];
+  const partitionnedTasks = partition(tasks, 'status');
   const [columns, setColumns] = useState<any>(partitionnedTasks);
+
+  useEffect(() => {
+    const newTasks = partition(tasks, 'status');
+    setColumns(newTasks);
+  }, [tasks]);
 
   const columnsConfig = {
     todo: 'todo',
