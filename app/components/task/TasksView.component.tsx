@@ -3,8 +3,6 @@ import Task from '../../models/task';
 import TaskKanbanViewComponent from './TaskKanbanView.component';
 import TasksListViewComponent from './TasksListView.component';
 
-export type Layout = 'list' | 'kanban';
-
 export default function TasksViewComponent(props: any): JSX.Element {
   switch (props.layout) {
     case 'list':

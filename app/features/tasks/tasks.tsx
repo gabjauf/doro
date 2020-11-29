@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import LayoutSelector from '../../components/layout-selector/Layout-selector.component';
 import TasksViewComponent, {
   Layout,
 } from '../../components/task/TasksView.component';
@@ -14,9 +15,8 @@ export default function Tasks() {
     setTasks([...tasks, task]);
   }
 
-  function toggleLayout() {
-    const newLayout = layout === 'list' ? 'kanban' : 'list';
-    setLayout(newLayout);
+  function layoutSelected(selectedLayout: Layout) {
+    setLayout(selectedLayout);
   }
 
   return (
@@ -24,9 +24,7 @@ export default function Tasks() {
       <button onClick={addTask} type="button">
         Add task
       </button>
-      <button onClick={toggleLayout} type="button">
-        toggle layout
-      </button>
+      <LayoutSelector layoutSelected={layoutSelected} />
       <div>Your tasks:</div>
       <TasksViewComponent tasks={tasks} layout={layout} />
     </div>
