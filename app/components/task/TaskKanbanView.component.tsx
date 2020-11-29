@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-props-no-spreading */
 import React, { useEffect, useState } from 'react';
 import { DragDropContext, Droppable, Draggable } from 'react-beautiful-dnd';
 import { partition } from 'lodash';
@@ -22,34 +23,45 @@ export default function TaskKanbanViewComponent(props: any): JSX.Element {
     done: 'done',
   };
 
-  function onDragEnd() {
-    console.log('end drag');
+  function onDragEnd({ source, destination }) {
+    console.log('end drag', source, destination);
   }
 
   return (
     <div className={styles.dragDropZone}>
       <DragDropContext onDragEnd={onDragEnd}>
         {columnNames.map((columnName, columnIndex) => (
-          <Droppable droppableId={columnName} key={columnName}>
-            {(provided: any, snapshot: any) => (
-              <div ref={provided.innerRef}>
-                <h1>{columnName}</h1>
-                <div>
-                  {(columns[columnIndex] || []).map(
-                    (item: Task, index: number) => (
-                      <Draggable
-                        key={item.id}
-                        draggableId={item.id}
-                        index={index}
-                      >
-                        {() => <TaskComponent task={item} />}
-                      </Draggable>
-                    )
-                  )}
+          <div key={columnName}>
+            <h1>{columnName}</h1>
+            <Droppable droppableId={columnName}>
+              {(provided: any, snapshot: any) => (
+                <div ref={provided.innerRef} {...provided.droppableProps}>
+                  <div>
+                    {(columns[columnIndex] || []).map(
+                      (item: Task, index: number) => (
+                        <Draggable
+                          key={item.id}
+                          draggableId={item.id}
+                          index={index}
+                        >
+                          {(draggableProvided: any) => (
+                            <div
+                              ref={draggableProvided.innerRef}
+                              {...draggableProvided.draggableProps}
+                              {...draggableProvided.dragHandleProps}
+                            >
+                              <TaskComponent task={item} />
+                            </div>
+                          )}
+                        </Draggable>
+                      )
+                    )}
+                  </div>
+                  {provided.placeholder}
                 </div>
-              </div>
-            )}
-          </Droppable>
+              )}
+            </Droppable>
+          </div>
         ))}
       </DragDropContext>
     </div>
