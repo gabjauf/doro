@@ -8,7 +8,12 @@ export default function TasksViewComponent(props: any): JSX.Element {
     case 'list':
       return <TasksListViewComponent tasks={props.tasks} />;
     case 'kanban':
-      return <TaskKanbanViewComponent tasks={props.tasks} />;
+      return (
+        <TaskKanbanViewComponent
+          tasks={props.tasks}
+          updateStatus={props.updateStatus}
+        />
+      );
     default:
       return <div>Invalid Layout</div>;
   }

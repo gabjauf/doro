@@ -8,6 +8,12 @@
   padding: var(--gutter);
   width: 250px;
   max-width: 250px;
+  display: flex;
+  flex-direction: column;
+}
+
+.dropZone {
+  flex-grow: 1;
 }
 
 .column + .column {

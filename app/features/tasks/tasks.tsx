@@ -19,6 +19,12 @@ export default function Tasks() {
     setLayout(selectedLayout);
   }
 
+  function updateStatus(task, status) {
+    console.log(task, status);
+    task.status = status;
+    setTasks([...tasks]);
+  }
+
   return (
     <div>
       <button onClick={addTask} type="button">
@@ -26,7 +32,11 @@ export default function Tasks() {
       </button>
       <LayoutSelector layoutSelected={layoutSelected} />
       <div>Your tasks:</div>
-      <TasksViewComponent tasks={tasks} layout={layout} />
+      <TasksViewComponent
+        tasks={tasks}
+        layout={layout}
+        updateStatus={updateStatus}
+      />
     </div>
   );
 }
