@@ -7,7 +7,7 @@ export default function TaskComponent(props: any): JSX.Element {
 
   return (
     <div className={styles.card}>
-      <h1>{task.title}</h1>
+      <h3>{task.title}</h3>
       <span>{task.status}</span>
     </div>
   );

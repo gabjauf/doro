@@ -8,7 +8,14 @@
 html {
   --color-text: #222;
   --color-background: #e9e9e9;
-  --color-primary: rebeccapurple;
+  --color-primary: #0f5ba4;
+  --color-secondary: #e9564d;
+  --color-tertiary: #ffce28;
+  --color-valid: #0dbf8a;
+  --color-error: #e00043;
+  --color-warning: #ffbb0b;
+  --color-dark: #010b25;
+  --color-light-blue: #c1def9;
   --normal-definition: 478;
   --bold-definition: 639;
   --gutter: 16px;
@@ -39,6 +46,11 @@ h2 {
   margin: 0;
   font-size: 2.25rem;
   letter-spacing: -0.025em;
+}
+
+h3 {
+  margin: 0;
+  font-size: 1.5rem;
 }
 
 p {

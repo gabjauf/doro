@@ -1,3 +1,19 @@
 .dragDropZone {
   display: flex;
 }
+
+.column {
+  background: var(--color-light-blue);
+  border-radius: 20px;
+  padding: var(--gutter);
+  width: 250px;
+  max-width: 250px;
+}
+
+.column + .column {
+  margin-left: var(--gutter);
+}
+
+.draggableCard + .draggableCard {
+  margin-top: var(--gutter);
+}

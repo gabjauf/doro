@@ -31,8 +31,10 @@ export default function TaskKanbanViewComponent(props: any): JSX.Element {
     <div className={styles.dragDropZone}>
       <DragDropContext onDragEnd={onDragEnd}>
         {columnNames.map((columnName, columnIndex) => (
-          <div key={columnName}>
-            <h1>{columnName}</h1>
+          <div key={columnName} className={styles.column}>
+            <h3>
+              {columnName} {(columns[columnIndex] || []).length}
+            </h3>
             <Droppable droppableId={columnName}>
               {(provided: any, snapshot: any) => (
                 <div ref={provided.innerRef} {...provided.droppableProps}>
@@ -46,6 +48,7 @@ export default function TaskKanbanViewComponent(props: any): JSX.Element {
                         >
                           {(draggableProvided: any) => (
                             <div
+                              className={styles.draggableCard}
                               ref={draggableProvided.innerRef}
                               {...draggableProvided.draggableProps}
                               {...draggableProvided.dragHandleProps}
