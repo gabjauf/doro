@@ -67,7 +67,7 @@ const createWindow = async () => {
     return path.join(RESOURCES_PATH, ...paths);
   };
 
-  const icon = getAssetPath('icon.png');
+  const icon = getAssetPath('icon-white.png');
 
   mainWindow = new BrowserWindow({
     show: false,
