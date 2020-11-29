@@ -1,3 +1,13 @@
+<h1 align="center">
+	<br>
+	<img width="400" height="200" src="resources/logo.svg" alt="doro">
+	<br>
+	<br>
+	<br>
+</h1>
+
+[![Maintainability](https://api.codeclimate.com/v1/badges/cce529b6be575de41865/maintainability)](https://codeclimate.com/github/gabjauf/doro/maintainability)
+
 # Doro, the productivity tool
 
 This is a personal project to test a more systemic approach to productivty tools.
